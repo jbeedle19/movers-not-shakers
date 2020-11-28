@@ -18,6 +18,7 @@
       <!-- HEADER 1--> 
     <h1 class="title has-text-centered py-6">Movers Not Shakers</h1>
 <!-- TILES--> 
+    <!-- Description -->
     <div class="tile is-ancestor">
       <div class="tile is-6 is-vertical is-parent">
         <p class="title">Description</p>
@@ -30,18 +31,25 @@
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <div class="tile is-6 is-child is-size-5">
+        <!-- Search Form -->
+        <!-- Working on putting icons in and creating dropdown w/ selections -->
+        <div class="tile is-6 is-child is-size-5 box">
           <p class="title">Search</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <div class="field">
+            <div class="control">
+              <input class="input is-info is-rounded is-medium" type="text" placeholder="Country">
+              <div class="select is-info">
+                <select>
+                  <option>Select Timeframe</option>
+                  <option> 1 year</option>
+                  <option> 5 years</option>
+                  <option> 10 years</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Earthquake API Return -->
         <div class="tile is-4 is-child is-size-5">
           <p class="title">Return Image</p>
           <p>
@@ -50,6 +58,7 @@
           </p>
         </div>
       </div>
+      <!-- Map Display -->
       <div class="tile is-10 is-parent">
         <div class="tile is-child box is-danger">
           <p class="title">Map</p>
