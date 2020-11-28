@@ -1,0 +1,10 @@
+/* CSS Start */
+body {
+  margin: 50px;
+  padding: 65px;
+  width: 80%;
+  box-sizing: border-box;
+}
+h1{
+    color: aliceblue;
+}
