@@ -8,3 +8,9 @@ body {
 h1{
     color: aliceblue;
 }
+
+/* Map */
+#map {
+    height: 500px;
+}
+ 
