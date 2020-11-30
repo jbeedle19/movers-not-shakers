@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" type="image/png" href="./assets/images/earthquake-favicon.png" />
     <title>Movers Not Shakers</title>
   </head>
   <!-- BODY--> 
@@ -17,6 +18,7 @@
       <!-- HEADER 1--> 
     <h1 class="title has-text-centered py-6">Movers Not Shakers</h1>
 <!-- TILES--> 
+    <!-- Description -->
     <div class="tile is-ancestor">
       <div class="tile is-6 is-vertical is-parent">
         <p class="title">Description</p>
@@ -29,18 +31,41 @@
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
+        <!-- Search Form -->
         <div class="tile is-6 is-child is-size-5">
           <p class="title">Search</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <div class="field is-grouped" id="search-form">
+            <div class="control has-icons-left">
+              <input class="input is-info is-rounded is-medium" type="text" placeholder="Country" id="search-term">
+              <span class="icon is-left">
+                <i class="fas fa-globe"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left">
+              <button class="button is-info is-medium" type="submit" id="search-btn">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control has-icons-left">
+              <div class="select is-info is-rounded">
+                <select id="timeframe">
+                  <option selected>Select Timeframe</option>
+                  <option class="option" data-timeframe="one-year">Past Year</option>
+                  <option class="option" data-timeframe="five-years">Past 5 Years</option>
+                  <option class="option" data-timeframe="ten-years">Past 10 Years</option>
+                </select>
+              </div>
+              <div class="icon is-small is-left">
+                <i class="fas fa-history"></i>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Earthquake API Return -->
         <div class="tile is-4 is-child is-size-5">
           <p class="title">Return Image</p>
           <p>
@@ -49,6 +74,7 @@
           </p>
         </div>
       </div>
+      <!-- Map Display -->
       <div class="tile is-10 is-parent">
         <div class="tile is-child box is-danger">
           <p class="title">Map</p>
@@ -64,10 +90,21 @@
     >
       Movers Not Shakers Inc.
     </footer>
+<<<<<<< HEAD
 <!-- JS links -->
     <script src="assets/js/script.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDShJHEIb-
     ZJYOLJ5NoEHOUFcN8DhtPltk&callback=initMap"
     type="text/javascript"></script>
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <!-- Bulma placeholder script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+>>>>>>> develop
   </body>
 </html>
