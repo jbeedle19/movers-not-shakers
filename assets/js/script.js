@@ -10,6 +10,6 @@ $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
     console.log(searchTerm);
-    var timeframe = $("#timeframe").val();
+    var timeframe = $(".option").data("timeframe")
     console.log(timeframe)
 })
