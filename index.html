@@ -33,25 +33,35 @@
         </p>
         <!-- Search Form -->
         <!-- Working on putting icons in and creating dropdown w/ selections -->
-        <div class="tile is-6 is-child is-size-5 box">
+        <div class="tile is-6 is-child is-size-5">
           <p class="title">Search</p>
-          <div class="field">
+          <div class="field is-grouped">
             <div class="control has-icons-left">
-              <input class="input is-info is-rounded is-medium" type="text" placeholder="Country">
+              <input class="input is-info is-rounded is-medium" type="text" placeholder="Country" id="search-term">
               <span class="icon is-left">
                 <i class="fas fa-globe"></i>
               </span>
             </div>
+            <div class="control has-icons-left">
+              <button class="button is-info is-medium" id="search-btn">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
+            </div>
           </div>
           <div class="field">
-            <div class="control">
+            <div class="control has-icons-left">
               <div class="select is-info is-rounded">
-                <select>
-                  <option>Select Timeframe</option>
-                  <option>Past Year</option>
-                  <option>Past 5 Years</option>
-                  <option>Past 10 Years</option>
+                <select id="timeframe">
+                  <option selected>Select Timeframe</option>
+                  <option data-timeframe="one-year">Past Year</option>
+                  <option data-timeframe="five-years">Past 5 Years</option>
+                  <option data-timeframe="ten-years">Past 10 Years</option>
                 </select>
+              </div>
+              <div class="icon is-small is-left">
+                <i class="fas fa-history"></i>
               </div>
             </div>
           </div>
