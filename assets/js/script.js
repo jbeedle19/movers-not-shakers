@@ -92,6 +92,7 @@ $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
     console.log(searchTerm);
-    var timeframe = $(".option").data("timeframe")
+    // Need to get value from whatever was selected in dropdown
+    var timeframe = $(".opt-3").val();
     console.log(timeframe)
 })
