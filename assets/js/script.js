@@ -1,18 +1,16 @@
-// Variables:
-var map, infoWindow;
+// // Variables:
+// var map, infoWindow;
 
 
-
-// Functions:
-
-// Creating map
-function createMap() {
-    var options = {
-        center: { lat: 39.9526, lng: -75.1652},
-        zoom: 10
-    };
-
-    map = new google.maps.Map(document.getElementById('map'), options);
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 8,
+    center: { lat: 39.9526, lng: -75.1652 },
+  });
+  const geocoder = new google.maps.Geocoder();
+  document.getElementById("search-btn").addEventListener("click", () => {
+    geocodeAddress(geocoder, map);
+  });
     // Centers map for new users to their current location
     infoWindow = new google.maps.InfoWindow;
 
@@ -78,21 +76,36 @@ function createMap() {
     });
 }
 
-// Location error function 
+// // // Location error function 
 function handleLocationError(content, position) {
     infoWindow.setPosition(position); 
     infowWindow.setContent(content);
     infoWindow.open(map);
 }
 
+function geocodeAddress(geocoder, resultsMap) {
+  const address = document.getElementById("search-term").value;
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
+      resultsMap.setCenter(results[0].geometry.location);
+      new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+      });
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+    
+}
+
 
 // Event Listeners:
-// Placeholder listener to test Search Field
+// // Placeholder listener to test Search Field
 $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
-    console.log(searchTerm);
-    // Need to get value from whatever was selected in dropdown
-    var timeframe = $(".opt-3").val();
-    console.log(timeframe)
+    // console.log(searchTerm);
+    var timeframe = $(".option").data("timeframe")
+    // console.log(timeframe)
 })
