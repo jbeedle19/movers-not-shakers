@@ -32,4 +32,3 @@ placeholder text
 
 ## Contribution
 Made with ❤️ by Maria Cannon, Mathew Crouse, Monica Cubillos-Canon, and Joshua Beedle
-Maria 
