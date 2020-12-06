@@ -1,6 +1,4 @@
 // // Variables:
-// var map, infoWindow;
-
 
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -31,24 +29,24 @@ function initMap() {
         handleLocationError('No geolocation available', map.center());
     } 
     
-    //Search for new places 
-    var input = document.getElementById('search-term');
-    var searchBox = new google.maps.places.SearchBox(input);
+    // //Search for new places 
+    // var input = document.getElementById('search-term');
+    // var searchBox = new google.maps.places.SearchBox(input);
 
-    //Looks for areas close to their location first 
-    map.addListener('bounds_changed', function () {
-        searchBox.setBounds(map.getBounds());
-    });
+    // //Looks for areas close to their location first 
+    // map.addListener('bounds_changed', function () {
+    //     searchBox.setBounds(map.getBounds());
+    // });
     
-    //shows search results on map
-    var markers = [];
+    // //shows search results on map
+    // var markers = [];
     
-    //Selects places predicted from searchbox
-    searchBox.addListener('places_changes', function () {
-        var places = searchBox.getPlaces();
+    // //Selects places predicted from searchbox
+    // searchBox.addListener('places_changes', function () {
+    //     var places = searchBox.getPlaces();
 
-        if (places.length === 0)
-            return;
+    //     if (places.length === 0)
+    //         return;
          
          //clears out previous markers
         markers.forEach(function (m) { m.setMap(null); });
@@ -73,8 +71,8 @@ function initMap() {
                 bounds.extend(p.geometry.location);
         });
         map.fitBounds(bounds);
-    });
-}
+};
+
 
 // // // Location error function 
 function handleLocationError(content, position) {
