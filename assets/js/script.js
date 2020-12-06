@@ -106,4 +106,5 @@ $("#search-btn").on("click", function(event) {
     // console.log(searchTerm);
     var timeframe = $(".option").data("timeframe")
     // console.log(timeframe)
+
 })
