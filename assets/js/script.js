@@ -1,6 +1,6 @@
 // // Variables:
 // var map, infoWindow;
-
+var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
 
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -99,13 +99,36 @@ function geocodeAddress(geocoder, resultsMap) {
     
 }
 
+//Function for displaying Current Weather
+function currentWeather(city) {
+  var apiURLCurrent =  "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
+  fetch(apiURLCurrent)
+      .then(function(response) {
+          if (response.ok) {
+              response.json().then(function(response) {
+              var iconCode = response.weather[0].icon;
+              var iconURL = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+              var currentTemp = response.main.temp + "°F";
+              var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
+                                 '<p class="subtitle" id="temp">' + currentTemp + '</p>'; 
+                  $('#icon-container').remove();
+                  $('#temp').remove();
+                  $("#weather-container").append(iconTempHTML);
+          });
+          } else {
+              alert("Error: " + response.statusText);
+          }
+      })
+      .catch(function(error) {
+          alert("Unable to connect to Weather Report");
+      });
+};
 
 // Event Listeners:
-// // Placeholder listener to test Search Field
+// Listens for search to be clicked and runs currentWeather
 $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
-    // console.log(searchTerm);
-    var timeframe = $(".option").data("timeframe")
-    // console.log(timeframe)
+    console.log(searchTerm);
+    currentWeather(searchTerm);
 })
