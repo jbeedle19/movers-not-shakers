@@ -1,6 +1,10 @@
-// // Variables:
-// var map, infoWindow;
+// Variables:
+// Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
+
+// Variable for localStorage and last searched item
+var lastSearch = localStorage.getItem("search")
+
 
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -124,11 +128,17 @@ function currentWeather(city) {
       });
 };
 
+// Function to load anything that was saved in localStorage
+/* function loadStorage() {
+
+} */
+
 // Event Listeners:
 // Listens for search to be clicked and runs currentWeather
 $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
     console.log(searchTerm);
+    localStorage.setItem("search", searchTerm);
     currentWeather(searchTerm);
 })
