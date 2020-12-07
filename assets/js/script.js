@@ -131,6 +131,7 @@ function currentWeather(city) {
 // Function to load anything that was saved in localStorage
 function loadStorage() {
   $("#search-term").val(lastSearch);
+  currentWeather(lastSearch);
   console.log(lastSearch);
 }
 loadStorage();
