@@ -3,7 +3,7 @@
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
 
 // Variable for localStorage and last searched item
-var lastSearch = localStorage.getItem("search")
+var lastSearch = localStorage.getItem("search") || '';
 
 
 function initMap() {
@@ -130,9 +130,13 @@ function currentWeather(city) {
 
 // Function to load anything that was saved in localStorage
 function loadStorage() {
-  $("#search-term").val(lastSearch);
-  currentWeather(lastSearch);
-  console.log(lastSearch);
+  if (lastSearch === '') {
+    return;
+  } else {
+    $("#search-term").val(lastSearch);
+    currentWeather(lastSearch);
+    console.log(lastSearch);
+  } 
 }
 loadStorage();
 
