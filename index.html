@@ -16,12 +16,42 @@
   <!-- BODY--> 
   <body>
       <!-- HEADER 1--> 
-    <h1 class="title has-text-centered py-6">Movers Not Shakers</h1>
+    <nav class="navbar is-fixed-top is-white pl-6">
+      <!-- logo -->
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="assets/images/Movers not shakers logo.jpg" alt="site logo" style="max-height: 100px" class= py-2 px-2>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a href="#nav-about" class="navbar-item title">About us</a>
+        </div>
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a href="#nav-search" class="navbar-item title">Search</a>
+        </div>
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a href="#nav-map" class="navbar-item title">Map</a>
+        </div>
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a href="#nav-forecast" class="navbar-item title">Forecast</a>
+        </div>
+      </div>
+    </nav>
 <!-- TILES--> 
     <!-- Description -->
     <div class="tile is-ancestor">
       <div class="tile is-6 is-vertical is-parent">
-        <p class="title">Description</p>
+        <p class="title py-3" id="nav-about">About us</p>
         <p class="subtitle">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -33,7 +63,7 @@
         </p>
         <!-- Search Form -->
         <div class="tile is-6 is-child is-size-5">
-          <p class="title">Search</p>
+          <p class="title" id="nav-search">Search</p>
           <div class="field is-grouped" id="search-form">
             <div class="control has-icons-left">
               <input class="input is-info is-rounded is-medium" type="text" placeholder="Country" id="search-term">
@@ -52,20 +82,20 @@
         </div>
         <!-- Weather API Return -->
         <div class="tile is-4 is-child is-size-5" id="weather-container">
-          <p class="title">Today's Forecast</p>
+          <p class="title" id="nav-forecast">Today's Forecast</p>
         </div>
       </div>
       <!-- Map Display -->
       <div class="tile is-10 is-parent">
         <div class="tile is-child box is-danger">
-          <p class="title">Map</p>
+          <p class="title" id="nav-map">Map</p>
           <div id="map" class="tile is-10"></div>
         </div>
       </div>
     </div>
 <!-- FOOTER-->     
     <footer
-      class="is-size-5 has-text-centered has-text-danger mt-6 mr-6 pb-6 pl-6"
+      class="is-size-5  mt-6 mr-6 pb-6 pl-6"
     >
       Movers Not Shakers Inc.
     </footer>
