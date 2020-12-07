@@ -129,16 +129,17 @@ function currentWeather(city) {
 };
 
 // Function to load anything that was saved in localStorage
-/* function loadStorage() {
-
-} */
+function loadStorage() {
+  $("#search-term").val(lastSearch);
+  console.log(lastSearch);
+}
+loadStorage();
 
 // Event Listeners:
 // Listens for search to be clicked and runs currentWeather
 $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
-    console.log(searchTerm);
     localStorage.setItem("search", searchTerm);
     currentWeather(searchTerm);
 })
