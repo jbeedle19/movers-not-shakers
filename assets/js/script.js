@@ -88,6 +88,9 @@ function initMap() {
       },
     ],
   });
+
+  
+  
     const geocoder = new google.maps.Geocoder();
   document.getElementById("search-btn").addEventListener("click", () => {
     geocodeAddress(geocoder, map);
