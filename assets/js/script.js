@@ -2,18 +2,42 @@
 // var map, infoWindow;
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
 
+
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
-    center: { lat: 39.9526, lng: -75.1652 },
+    center: { lat: 37.774546, lng: -122.433523 },
+    MapTypeId: "terrain",
   });
   const geocoder = new google.maps.Geocoder();
   document.getElementById("search-btn").addEventListener("click", () => {
     geocodeAddress(geocoder, map);
   });
+
+//Heat the map 
+const script = document.createElement("script");
+script.src = "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
+document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+function eqfeed_callback(results) {
+    const heatmapData = [];
+  
+    for (let i = 0; i < results.features.length; i++) {
+      const coords = results.features[i].geometry.coordinates;
+      const latLng = new google.maps.LatLng(coords[1], coords[0]);
+      heatmapData.push(latLng);
+    }
+    const heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatmapData,
+      dissipating: false,
+      map: map,
+    });
+    heatmap.setMap(map);
+  }
+
     // Centers map for new users to their current location
     infoWindow = new google.maps.InfoWindow;
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (p) {
             var position = {
@@ -25,8 +49,7 @@ function initMap() {
             infoWindow.open(map);
         }, function () {
             handleLocationError('Geolocation service failed', map.center());
-        })
-            
+        })      
     } else {
         handleLocationError('No geolocation available', map.center());
     } 
@@ -74,7 +97,7 @@ function initMap() {
         });
         map.fitBounds(bounds);
     });
-}
+
 
 // // // Location error function 
 function handleLocationError(content, position) {
@@ -98,6 +121,8 @@ function geocodeAddress(geocoder, resultsMap) {
   });
     
 }
+
+
 
 //Function for displaying Current Weather
 function currentWeather(city) {
