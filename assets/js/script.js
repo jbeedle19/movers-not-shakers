@@ -99,6 +99,25 @@ function initMap() {
   document.getElementById("search-btn").addEventListener("click", () => {
     geocodeAddress(geocoder, map);
   });
+  //     // Centers map for new users to their current location
+  //   infoWindow = new google.maps.InfoWindow;
+
+  //   if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(function (p) {
+  //           var position = {
+  //               lat: p.coords.latitude,
+  //               lng: p.coords.longitutde
+  //           };
+  //           infoWindow.setPosition(position);
+  //           infoWindow.setContent('Your location');
+  //           infoWindow.open(map);
+  //       }, function () {
+  //           handleLocationError('Geolocation service failed', map.center());
+  //       })
+            
+  //   } else {
+  //       handleLocationError('No geolocation available', map.center());
+  // } 
       //Search for new places 
     var input = document.getElementById('search-term');
     var searchBox = new google.maps.places.SearchBox(input);
@@ -190,7 +209,7 @@ function currentWeather(city) {
           } else {
               $("html").addClass("is-clipped");
               $("#error-modal").addClass("is-active");
-              $("#error").text(response.statusText);
+              $("#error").text("Not able to find weather for specific location. Please enter city, state or country.");
               
           }
       })
