@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="icon" type="image/png" href="./assets/images/earthquake-favicon.png" />
     <!-- Earthquake Circles -->
+    <script async defer src=
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyBDh_
+    l8hWuiFHDGps-sQqN1pBckdYoceNs&callback=initMap&libraries=places&v=weekly"
+    defer 
+    type="text/javascript"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDh_
+    l8hWuiFHDGps-sQqN1pBckdYoceNs&libraries=visualization&callback=initMap"></script>
     <title>Movers Not Shakers</title>
   </head>
   <!-- BODY--> 
@@ -83,11 +90,7 @@
         <div class="tile is-4 is-child is-size-5 ml-5" id="weather-container">
           <p class="title ml-5" id="nav-forecast">Today's Forecast</p>
         </div>
-      <!-- New API Return -->
-      <div class="tile is-3 is-child is-size-5 ml-5" id="new">
-        <p class="title ml-5" id="nav-forecast">New API</p>
       </div>
-    </div>
       <!-- Map Display -->
       <div class="tile is-10 is-parent">
         <div class="tile is-child ">
@@ -103,12 +106,8 @@
       Movers Not Shakers Inc.
     </footer>
 <!-- Google API link -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script async defer src=
-    "https://maps.googleapis.com/maps/api/js?key=AIzaSyBDh_
-    l8hWuiFHDGps-sQqN1pBckdYoceNs&callback=initMap&libraries=places&v=weekly"
-    defer 
-    type="text/javascript"></script>
+   <!--  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
+     
     <!-- Earthquake Heat Map -->
    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDh_
     l8hWuiFHDGps-sQqN1pBckdYoceNs&libraries=visualization&callback=initMap"></script>  
