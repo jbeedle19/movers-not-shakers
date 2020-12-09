@@ -101,7 +101,7 @@ function initMap() {
   });
   //     // Centers map for new users to their current location
   //   infoWindow = new google.maps.InfoWindow;
-  
+
       //Search for new places 
     var input = document.getElementById('search-term');
     var searchBox = new google.maps.places.SearchBox(input);
@@ -227,7 +227,6 @@ $("#search-btn").on("click", function(event) {
 // closes error modal 
 $("#close").on("click", function (event) {
       event.preventDefault();
-      console.log("youclickedme")
       $("html").removeClass("is-clipped");
       $("#error-modal").removeClass("is-active");
  });
