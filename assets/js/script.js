@@ -7,11 +7,9 @@ function initMap() {
   // Styles a map in night mode.
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
-    center: { lat: 37.774546, lng: -122.433523 },
+    center: { lat: 40.674, lng: -73.945},
     MapTypeId: "terrain",
   });
-
-  
   
     const geocoder = new google.maps.Geocoder();
   document.getElementById("search-btn").addEventListener("click", () => {
@@ -23,6 +21,24 @@ const script = document.createElement("script");
 script.src = "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
 document.getElementsByTagName("head")[0].appendChild(script);
 
+function eqfeed_callback(results) {
+    var heatmapData = [];
+    console.log("this works")
+    // for (var i = 0; i &lt; results.features.length; i++) {
+    //   var coords = results.features[i].geometry.coordinates;
+    //   var latLng = new google.maps.LatLng(coords[1], coords[0]);
+    //   heatmapData.push(latLng);
+    // }
+    var latLng = new google.maps.LatLng(40.674, -73.945);
+    console.log (results.latitude)
+    heatmapData.push(latLng);
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatmapData,
+      dissipating: false,
+      map: map
+    });
+    console.log ("finished", heatmap)
+  }
     // Centers map for new users to their current location
     infoWindow = new google.maps.InfoWindow;
     if (navigator.geolocation) {
@@ -31,6 +47,7 @@ document.getElementsByTagName("head")[0].appendChild(script);
                 lat: p.coords.latitude,
                 lng: p.coords.longitutde
             };
+            eqfeed_callback (p.coords)
             infoWindow.setPosition(position);
             infoWindow.setContent('Your location');
             infoWindow.open(map);
@@ -84,7 +101,7 @@ document.getElementsByTagName("head")[0].appendChild(script);
         map.fitBounds(bounds);
     });
 }
-     
+initMap()     
 
 // // // Location error function 
 function handleLocationError(content, position) {
@@ -113,28 +130,53 @@ function geocodeAddress(geocoder, resultsMap) {
 
 //Function for displaying Current Weather
 function currentWeather(city) {
-  var apiURLCurrent =  "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
-  fetch(apiURLCurrent)
-      .then(function(response) {
-          if (response.ok) {
-              response.json().then(function(response) {
-              var iconCode = response.weather[0].icon;
-              var iconURL = "http://openweathermap.org/img/wn/" + iconCode + ".png";
-              var currentTemp = response.main.temp + "°F";
-              var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
-                                 '<p class="subtitle" id="temp">' + currentTemp + '</p>'; 
-                  $('#icon-container').remove();
-                  $('#temp').remove();
-                  $("#weather-container").append(iconTempHTML);
-          });
-          } else {
-              alert("Error: " + response.statusText);
-          }
-      })
-      .catch(function(error) {
-          alert("Unable to connect to Weather Report");
-      });
-};
+    var apiURLCurrent =  "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
+    fetch(apiURLCurrent)
+        .then(function(response) {
+            if (response.ok) {
+                response.json().then(function(response) {
+                var iconCode = response.weather[0].icon;
+                var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+                var currentTemp = response.main.temp + "°F";
+                var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
+                                   '<p class="subtitle" id="temp">' + currentTemp + '</p>'; 
+                    $('#icon-container').remove();
+                    $('#temp').remove();
+                    $("#weather-container").append(iconTempHTML);
+            });
+            } else {
+                alert("Error: " + response.statusText);
+            }
+        })
+        .catch(function(error) {
+            alert("Unable to connect to Weather Report");
+        });
+  };
+
+function currentWeather(city) {
+    var apiURLCurrent =  "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
+    fetch(apiURLCurrent)
+        .then(function(response) {
+            if (response.ok) {
+                response.json().then(function(response) {
+                var iconCode = response.weather[0].icon;
+                var iconURL = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+                var currentTemp = response.main.temp + "°F";
+                var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
+                                   '<p class="subtitle" id="temp">' + currentTemp + '</p>'; 
+                    $('#icon-container').remove();
+                    $('#temp').remove();
+                    $("#weather-container").append(iconTempHTML);
+            });
+            } else {
+                alert("Error: " + response.statusText);
+            }
+        })
+        .catch(function(error) {
+            alert("Unable to connect to Weather Report");
+        });
+  };
+
 
 // Function to load anything that was saved in localStorage
 function loadStorage() {
