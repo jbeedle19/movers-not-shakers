@@ -1,15 +1,19 @@
-// // Variables:
-// var map, infoWindow;
+// Variables:
+// Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
 
 
 function initMap() {
+  // Styles a map in night mode.
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
     center: { lat: 37.774546, lng: -122.433523 },
     MapTypeId: "terrain",
   });
-  const geocoder = new google.maps.Geocoder();
+
+  
+  
+    const geocoder = new google.maps.Geocoder();
   document.getElementById("search-btn").addEventListener("click", () => {
     geocodeAddress(geocoder, map);
   });
@@ -35,9 +39,8 @@ document.getElementsByTagName("head")[0].appendChild(script);
         })      
     } else {
         handleLocationError('No geolocation available', map.center());
-    } 
-    
-    //Search for new places 
+  } 
+      //Search for new places 
     var input = document.getElementById('search-term');
     var searchBox = new google.maps.places.SearchBox(input);
 
@@ -133,11 +136,23 @@ function currentWeather(city) {
       });
 };
 
+// Function to load anything that was saved in localStorage
+function loadStorage() {
+  if (lastSearch === '') {
+    return;
+  } else {
+    $("#search-term").val(lastSearch);
+    currentWeather(lastSearch);
+    console.log(lastSearch);
+  } 
+}
+loadStorage();
+
 // Event Listeners:
 // Listens for search to be clicked and runs currentWeather
 $("#search-btn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = $("#search-term").val();
-    console.log(searchTerm);
+    localStorage.setItem("search", searchTerm);
     currentWeather(searchTerm);
 })
