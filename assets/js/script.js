@@ -99,25 +99,9 @@ function initMap() {
   $("#search-btn").on("click", () => {
     geocodeAddress(geocoder, map);
   });
-      // Centers map for new users to their current location
-    infoWindow = new google.maps.InfoWindow;
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (p) {
-            var position = {
-                lat: p.coords.latitude,
-                lng: p.coords.longitude
-            };
-            infoWindow.setPosition(position);
-            infoWindow.setContent('Your location');
-            infoWindow.open(map);
-        }, function () {
-            handleLocationError('Geolocation service failed', map.center());
-        })
-            
-    } else {
-        handleLocationError('No geolocation available', map.center());
-  } 
+  //     // Centers map for new users to their current location
+  //   infoWindow = new google.maps.InfoWindow;
+  
       //Search for new places 
     var input = document.getElementById('search-term');
     var searchBox = new google.maps.places.SearchBox(input);
@@ -161,6 +145,7 @@ function initMap() {
         });
         map.fitBounds(bounds);
     });
+  
 }
 
 // // // Location error function 
@@ -180,7 +165,9 @@ function geocodeAddress(geocoder, resultsMap) {
         position: results[0].geometry.location,
       });
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
+        $("html").addClass("is-clipped");
+        $("#error-modal").addClass("is-active");
+        $("#error").text("Geocode was not successful for the following reason: " + status);
     }
   });
     
@@ -203,12 +190,18 @@ function currentWeather(city) {
                   $("#weather-container").append(iconTempHTML);
           });
           } else {
-              alert("Error: " + response.statusText);
+              $("html").addClass("is-clipped");
+              $("#error-modal").addClass("is-active");
+              $("#error").text("Not able to find weather for specific location. Please enter city, state or country.");
+              
           }
       })
       .catch(function(error) {
-          alert("Unable to connect to Weather Report");
-      });
+          $("html").addClass("is-clipped");
+          $("#error-modal").addClass("is-active");
+          $("#error").text("Unable to connect to Weather Report");
+         
+        });
 };
 
 // Function to load anything that was saved in localStorage
@@ -231,3 +224,11 @@ $("#search-btn").on("click", function(event) {
     localStorage.setItem("search", searchTerm);
     currentWeather(searchTerm);
 })
+// closes error modal 
+$("#close").on("click", function (event) {
+      event.preventDefault();
+      console.log("youclickedme")
+      $("html").removeClass("is-clipped");
+      $("#error-modal").removeClass("is-active");
+ });
+
