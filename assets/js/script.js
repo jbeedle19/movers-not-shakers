@@ -18,23 +18,6 @@ function initMap() {
 const script = document.createElement("script");
 script.src = "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
 document.getElementsByTagName("head")[0].appendChild(script);
-}
-
-function eqfeed_callback(results) {
-    const heatmapData = [];
-  
-    for (let i = 0; i < results.features.length; i++) {
-      const coords = results.features[i].geometry.coordinates;
-      const latLng = new google.maps.LatLng(coords[1], coords[0]);
-      heatmapData.push(latLng);
-    }
-    const heatmap = new google.maps.visualization.HeatmapLayer({
-      data: heatmapData,
-      dissipating: false,
-      map: map,
-    });
-    heatmap.setMap(map);
-  }
 
     // Centers map for new users to their current location
     infoWindow = new google.maps.InfoWindow;
@@ -97,7 +80,8 @@ function eqfeed_callback(results) {
         });
         map.fitBounds(bounds);
     });
-
+}
+     
 
 // // // Location error function 
 function handleLocationError(content, position) {
@@ -110,6 +94,7 @@ function geocodeAddress(geocoder, resultsMap) {
   const address = document.getElementById("search-term").value;
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === "OK") {
+        console.log (results,"ARRAY")
       resultsMap.setCenter(results[0].geometry.location);
       new google.maps.Marker({
         map: resultsMap,
@@ -119,9 +104,8 @@ function geocodeAddress(geocoder, resultsMap) {
       alert("Geocode was not successful for the following reason: " + status);
     }
   });
-    
 }
-
+  
 
 
 //Function for displaying Current Weather
