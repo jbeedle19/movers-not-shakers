@@ -96,7 +96,7 @@ function initMap() {
   
   
     const geocoder = new google.maps.Geocoder();
-  document.getElementById("search-btn").addEventListener("click", () => {
+  $("#search-btn").on("click", () => {
     geocodeAddress(geocoder, map);
   });
       // Centers map for new users to their current location
@@ -106,11 +106,8 @@ function initMap() {
         navigator.geolocation.getCurrentPosition(function (p) {
             var position = {
                 lat: p.coords.latitude,
-                lng: p.coords.longitutde
-                // capture this data for local storage
+                lng: p.coords.longitude
             };
-            console.log(p.coords.longitutde)
-            console.log(position);
             infoWindow.setPosition(position);
             infoWindow.setContent('Your location');
             infoWindow.open(map);
@@ -221,7 +218,7 @@ function loadStorage() {
   } else {
     $("#search-term").val(lastSearch);
     currentWeather(lastSearch);
-    console.log(lastSearch);
+    setTimeout(function(){ $('#search-btn').click()}, 100);
   } 
 }
 loadStorage();
