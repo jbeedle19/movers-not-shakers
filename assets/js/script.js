@@ -25,6 +25,8 @@ function initMap() {
                 lng: p.coords.longitutde
                 // capture this data for local storage
             };
+            console.log(p.coords.longitutde)
+            console.log(position);
             infoWindow.setPosition(position);
             infoWindow.setContent('Your location');
             infoWindow.open(map);
