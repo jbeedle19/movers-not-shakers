@@ -107,6 +107,7 @@ function initMap() {
             var position = {
                 lat: p.coords.latitude,
                 lng: p.coords.longitutde
+                //try storing this into local storage
             };
             infoWindow.setPosition(position);
             infoWindow.setContent('Your location');
