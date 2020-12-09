@@ -23,6 +23,7 @@ function initMap() {
             var position = {
                 lat: p.coords.latitude,
                 lng: p.coords.longitutde
+                // capture this data for local storage
             };
             infoWindow.setPosition(position);
             infoWindow.setContent('Your location');
@@ -105,13 +106,13 @@ function geocodeAddress(geocoder, resultsMap) {
 
 //Function for displaying Current Weather
 function currentWeather(city) {
-  var apiURLCurrent =  "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
+  var apiURLCurrent =  "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
   fetch(apiURLCurrent)
       .then(function(response) {
           if (response.ok) {
               response.json().then(function(response) {
               var iconCode = response.weather[0].icon;
-              var iconURL = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+              var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
               var currentTemp = response.main.temp + "°F";
               var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
                                  '<p class="subtitle" id="temp">' + currentTemp + '</p>'; 
