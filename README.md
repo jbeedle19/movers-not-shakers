@@ -9,8 +9,8 @@ A site to help users plan trips based on that location's seismic activity. Desig
 * JavaScript
 * jQuery
 * Bulma
-* OpenWeather API
 * Google Maps API
+* OpenWeather API
 
 ## Website
 https://jbeedle19.github.io/movers-not-shakers/

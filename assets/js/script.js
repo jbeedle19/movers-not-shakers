@@ -1,3 +1,9 @@
+//mobile CSS 
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#nav-links");
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active")
+});
 // Variables:
 // Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
@@ -8,9 +14,9 @@ var lastSearch = localStorage.getItem("search") || '';
 
 function initMap() {
   // Styles a map in night mode.
-  const map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.674, lng: -73.945 },
-    zoom: 12,
+    zoom: 7,
     styles: [
       { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
       { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -93,82 +99,91 @@ function initMap() {
     ],
   });
 
-  
-  
-    const geocoder = new google.maps.Geocoder();
-  document.getElementById("search-btn").addEventListener("click", () => {
+  const geocoder = new google.maps.Geocoder();
+  $("#search-btn").on("click", () => {
     geocodeAddress(geocoder, map);
   });
-      // Centers map for new users to their current location
-    infoWindow = new google.maps.InfoWindow;
+  
+  const script = document.createElement("script");
+  script.setAttribute(
+    "src",
+    "https://storage.googleapis.com/mapsdevsite/json/quakes.geo.json"
+  );
+  document.getElementsByTagName("head")[0].appendChild(script);
+  // Add a basic style.
+  map.data.setStyle((feature) => {
+    const mag = Math.exp(parseFloat(feature.getProperty("mag"))) * 0.1;
+    return /** @type {google.maps.Data.StyleOptions} */ {
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: mag,
+        fillColor: "#f00",
+        fillOpacity: 0.35,
+        strokeWeight: 0,
+      },
+    };
+  });
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (p) {
-            var position = {
-                lat: p.coords.latitude,
-                lng: p.coords.longitutde
-                //try storing this into local storage
-            };
-            infoWindow.setPosition(position);
-            infoWindow.setContent('Your location');
-            infoWindow.open(map);
-        }, function () {
-            handleLocationError('Geolocation service failed', map.center());
-        })
-            
-    } else {
-        handleLocationError('No geolocation available', map.center());
-  } 
-      //Search for new places 
-    var input = document.getElementById('search-term');
-    var searchBox = new google.maps.places.SearchBox(input);
+  // Defines the callback function referenced in the jsonp file.
+function eqfeed_callback(data) {
+  map.data.addGeoJson(data);
+  }
 
-    //Looks for areas close to their location first 
-    map.addListener('bounds_changed', function () {
-        searchBox.setBounds(map.getBounds());
+  //Search for new places 
+  var input = document.getElementById('search-term');
+  var searchBox = new google.maps.places.SearchBox(input);
+
+  //Looks for areas close to their location first 
+  map.addListener('bounds_changed', function () {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  //shows search results on map
+  var markers = [];
+
+  //Selects places predicted from searchbox
+  searchBox.addListener('places_changes', function () {
+    var places = searchBox.getPlaces();
+
+    if (places.length === 0)
+      return;
+
+    //clears out previous markers
+    markers.forEach(function (m) { m.setMap(null); });
+    markers = [];
+
+    //Coordinate boundaries of map
+    var bounds = new google.maps.LatLngBounds();
+
+    places.forEach(function (p) {
+      if (!p.geometry)
+        return;
+
+      markers.push(new google.maps.Marker({
+        map: map,
+        title: p.name,
+        position: p.geometry.location
+      }));
+
+      if (p.geometry.viewport)
+        bounds.union(p.geometry.viewport);
+      else
+        bounds.extend(p.geometry.location);
     });
-    
-    //shows search results on map
-    var markers = [];
-    
-    //Selects places predicted from searchbox
-    searchBox.addListener('places_changes', function () {
-        var places = searchBox.getPlaces();
+    map.fitBounds(bounds);
+  });
 
-        if (places.length === 0)
-            return;
-         
-         //clears out previous markers
-        markers.forEach(function (m) { m.setMap(null); });
-        markers = [];
+}
 
-        //Coordinate boundaries of map
-        var bounds = new google.maps.LatLngBounds();
-        
-        places.forEach(function (p) {
-            if (!p.geometry)
-                return;
-            
-            markers.push(new google.maps.Marker({
-                map: map,
-                title: p.name,
-                position: p.geometry.location
-            }));
-
-            if (p.geometry.viewport)
-                bounds.union(p.geometry.viewport);
-            else
-                bounds.extend(p.geometry.location);
-        });
-        map.fitBounds(bounds);
-    });
+function eqfeed_callback(data) {
+  map.data.addGeoJson(data);
 }
 
 // // // Location error function 
 function handleLocationError(content, position) {
-    infoWindow.setPosition(position); 
-    infowWindow.setContent(content);
-    infoWindow.open(map);
+  infoWindow.setPosition(position);
+  infowWindow.setContent(content);
+  infoWindow.open(map);
 }
 
 function geocodeAddress(geocoder, resultsMap) {
@@ -181,35 +196,43 @@ function geocodeAddress(geocoder, resultsMap) {
         position: results[0].geometry.location,
       });
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
+      $("html").addClass("is-clipped");
+      $("#error-modal").addClass("is-active");
+      $("#error").text("Geocode was not successful for the following reason: " + status);
     }
   });
-    
+
 }
 
 //Function for displaying Current Weather
 function currentWeather(city) {
-  var apiURLCurrent =  "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
+  var apiURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
   fetch(apiURLCurrent)
-      .then(function(response) {
-          if (response.ok) {
-              response.json().then(function(response) {
-              var iconCode = response.weather[0].icon;
-              var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
-              var currentTemp = response.main.temp + "°F";
-              var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
-                                 '<p class="subtitle" id="temp">' + currentTemp + '</p>'; 
-                  $('#icon-container').remove();
-                  $('#temp').remove();
-                  $("#weather-container").append(iconTempHTML);
-          });
-          } else {
-              alert("Error: " + response.statusText);
-          }
-      })
-      .catch(function(error) {
-          alert("Unable to connect to Weather Report");
-      });
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (response) {
+          var iconCode = response.weather[0].icon;
+          var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+          var currentTemp = response.main.temp + "°F";
+          var iconTempHTML = '<p class="subtitle has-text-centered is-large" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
+            '<p class="subtitle has-text-centered is-large" id="temp">' + currentTemp + '</p>';
+          $('#icon-container').remove();
+          $('#temp').remove();
+          $("#weather-container").append(iconTempHTML);
+        });
+      } else {
+        $("html").addClass("is-clipped");
+        $("#error-modal").addClass("is-active");
+        $("#error").text("Not able to find weather for specific location. Please enter city, state or country.");
+
+      }
+    })
+    .catch(function (error) {
+      $("html").addClass("is-clipped");
+      $("#error-modal").addClass("is-active");
+      $("#error").text("Unable to connect to Weather Report");
+
+    });
 };
 
 // Function to load anything that was saved in localStorage
@@ -219,16 +242,25 @@ function loadStorage() {
   } else {
     $("#search-term").val(lastSearch);
     currentWeather(lastSearch);
-    console.log(lastSearch);
-  } 
+    setTimeout(function () { $('#search-btn').click() }, 100);
+  }
 }
-loadStorage();
+
 
 // Event Listeners:
 // Listens for search to be clicked and runs currentWeather
-$("#search-btn").on("click", function(event) {
-    event.preventDefault();
-    var searchTerm = $("#search-term").val();
-    localStorage.setItem("search", searchTerm);
-    currentWeather(searchTerm);
+$("#search-btn").on("click", function (event) {
+  event.preventDefault();
+  var searchTerm = $("#search-term").val();
+  localStorage.setItem("search", searchTerm);
+  currentWeather(searchTerm);
 })
+// closes error modal 
+$("#close").on("click", function (event) {
+  event.preventDefault();
+  $("html").removeClass("is-clipped");
+  $("#error-modal").removeClass("is-active");
+});
+
+loadStorage();
+initMap();
