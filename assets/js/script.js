@@ -10,7 +10,7 @@ function initMap() {
   // Styles a map in night mode.
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.674, lng: -73.945 },
-    zoom: 12,
+    zoom: 10,
     styles: [
       { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
       { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -169,6 +169,9 @@ function eqfeed_callback(data) {
 
 }
 
+function eqfeed_callback(data) {
+  map.data.addGeoJson(data);
+}
 
 // // // Location error function 
 function handleLocationError(content, position) {
