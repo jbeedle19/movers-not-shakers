@@ -14,18 +14,18 @@
     <title>Movers Not Shakers</title>
   </head>
   <!-- BODY--> 
-  <body class="has-background-black">
+  <body>
       <!-- HEADER 1--> 
-    <div class="navbar py-4 has-shadow is-white has-text-small" role="navigation">
+    <div class="navbar py-4 px-4 has-shadow is-white has-text-small" role="navigation">
       <div class="container">
       <!-- logo -->
       <div class="navbar-brand">
-        <a class="navbar-item">
-          <img src="assets/images/Movers not shakers logo.jpg" alt="site logo" style="max-height: 100px" class= "py-2 px-2">
+        <a class="navbar-item" href="#nav-contact">
+          <img src="assets/images/Movers not shakers logo.jpg" alt="site logo" style="max-height: 200px" class= "py-2 px-2 is-inline-touch">
         </a>
       </div>
       <div>
-        <a class="navbar-burger" id="burger" aria-label="menu">
+        <a class="navbar-burger py-4 px-4" id="burger" aria-label="menu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -50,9 +50,10 @@
 <!-- TILES--> 
     <!-- Description -->
     <div class="tile is-ancestor">
-      <div class="tile is-5 is-vertical is-parent py-6 my-6">
+      <div class="tile is-7 is-vertical is-parent py-6 my-6">
+       <div class="is-child box ">
         <p class="title ml-5" id="nav-about" >About Us</p>
-        <p class="subtitle ml-5">
+        <p class="subtitle ml-5 py-4">
           Are you deathly scared of earthquakes but also an avid traveler? Are you sick 
           of wasting time checking multiple sites to cross reference seismic information with
           your travel plans? Here at Movers Not Shakers&copy; we strive to simplify your query 
@@ -60,12 +61,13 @@
           State or Country in which you plan to travel and you will be provided with the most 
           recent seismic activity along with the weather for that area.
         </p>
+       </div>
         <!-- Search Form -->
-        <div class="tile is-6 is-child is-size-5 py-6 my-6">
+        <div class="tile is-10 is-vertical is-child box is-size-5 py-6 my-6 is-inline-touch">
           <p class="title ml-5" id="nav-search">Search</p>
           <div class="field is-grouped" id="search-form">
             <div class="control has-icons-left ml-5">
-              <input class="input is-info is-rounded is-medium" type="text" placeholder="City, State or Country" id="search-term">
+              <input class="input is-info is-rounded is-large" type="text" placeholder="City, State or Country" id="search-term">
               <span class="icon is-left">
                 <i class="fas fa-globe"></i>
               </span>
@@ -80,26 +82,31 @@
           </div>
         </div>
         <!-- Weather API Return -->
-        <div class="tile is-4 is-child is-size-5 ml-1 py-7 my-2 has-text-left" id="weather-container">
-          <p class="title" id="nav-forecast">Today's Forecast</p>
+        <div class="tile is-7 is-child box is-size-5 ml-1 py-6 my-6" id="weather-container">
+          <p class="title ml-5" id="nav-forecast">Today's Forecast</p>
         </div>
       </div>
       <!-- Map Display -->
-      <div class="tile is-10 is-parent py-6">
-        <div class="tile is-child box-is-black">
-          <p class="title has-background-b ml-5">Map</p>
-          <div id="map" class="tile is-10 ml-1"></div>
-        </div>
-      </div>
+     <div id="mp1">
+      <div class="tile is-parent py-6 is-vertical">
+        <div class="tile is-10 is-child box py-6">
+          <p class="title ml-5">Map</p> 
+          <div id="map" class="tile is-12">
+          </div>  
+          </div>
+          </div>
+          </div>
     </div>
 <!-- FOOTER-->     
-    <footer class="footer title ml-5 py-6 my-6">
+    <footer class="footer title ml-5 py-6 my-6 is-inline-touch">
       <div class="content has-text-centered">
-        <div class="py-3">
-        <a href="mailto:contact@moversnotshakers.com"><i class="far fa-address-card"></i>Contact Us
+        <div class="py-3" id="nav-contact">
+        <a href="mailto:contact@moversnotshakers.com"><i class="far fa-address-card ml-1 mx-1"></i>Contact Us
         </a>
       </div>
+      <div class="is-inline-touch ml-1 mx-1">
       <p>Movers Not Shakers Inc.</p>
+      </div>
     </div>
   </footer>
       <div class="modal" id="error-modal">
