@@ -1,3 +1,10 @@
+//mobil menu 
+const burgerIcon = document.querySelector("burger")
+const navbarMenu = document.querySelector("nav-links")
+burgerIcon.addEventListener ("click", () =>{
+    navrbarMenu.classList.toggle("is-active")
+})
+
 // Variables:
 // Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
@@ -7,7 +14,7 @@ var dineAPIKey = "11a724b138800024babd54448ba6602b"
 function initMap() {
   // Styles a map in night mode.
    map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 2,
+    zoom: 12,
     center: { lat: 20, lng: -160},
     MapTypeId: "terrain",
   });
@@ -18,19 +25,45 @@ function initMap() {
   });
 
 //Heat the map 
-const bikeLayer = new google.maps.BicyclingLayer();
-  bikeLayer.setMap(map);
+// const bikeLayer = new google.maps.BicyclingLayer();
+//   bikeLayer.setMap(map);
 
-  const trafficLayer = new google.maps.TrafficLayer();
-  trafficLayer.setMap(map);
+//   const trafficLayer = new google.maps.TrafficLayer();
+//   trafficLayer.setMap(map);
 
 
-  const script = document.createElement("script");
-  script.setAttribute(
-    "src",
-    "https://storage.googleapis.com/mapsdevsite/json/quakes.geo.json"
-  );
-  document.getElementsByTagName("head")[0].appendChild(script);
+//   const script = document.createElement("script");
+//   script.setAttribute(
+//     "src",
+//     "https://storage.googleapis.com/mapsdevsite/json/quakes.geo.json"
+//   );
+//   document.getElementsByTagName("head")[0].appendChild(script);
+
+const script = document.createElement("script");
+script.setAttribute(
+  "src",
+  "https://storage.googleapis.com/mapsdevsite/json/quakes.geo.json"
+);
+document.getElementsByTagName("head")[0].appendChild(script);
+// Add a basic style.
+map.data.setStyle((feature) => {
+  const mag = Math.exp(parseFloat(feature.getProperty("mag"))) * 0.1;
+  return /** @type {google.maps.Data.StyleOptions} */ {
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: mag,
+      fillColor: "#f00",
+      fillOpacity: 0.35,
+      strokeWeight: 0,
+    },
+  };
+});
+
+
+// Defines the callback function referenced in the jsonp file.
+function eqfeed_callback(data) {
+map.data.addGeoJson(data);
+}
 
 
 
@@ -53,23 +86,23 @@ const bikeLayer = new google.maps.BicyclingLayer();
 //     console.log ("finished", heatmap)
 //   }
     // Centers map for new users to their current location
-//     infoWindow = new google.maps.InfoWindow;
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(function (data) {
-//             var position = {
-//                 lat: 20,
-//                 lng: -160,
-//             };
-//             eqfeed_callback (data)
-//             infoWindow.setPosition(position);
-//             infoWindow.setContent('Your location');
-//             infoWindow.open(map);
-//         }, function () {
-//             handleLocationError('Geolocation service failed', map.center());
-//         })      
-//     } else {
-//         handleLocationError('No geolocation available', map.center());
-//   } 
+ infoWindow = new google.maps.InfoWindow;
+    if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function (data) {
+             var position = {
+                 lat: 20,
+                 lng: -160,
+            };
+             eqfeed_callback (data)
+             infoWindow.setPosition(position);
+             infoWindow.setContent('Your location');
+             infoWindow.open(map);
+         }, function () {
+             handleLocationError('Geolocation service failed', map.center());
+         })      
+     } else {
+         handleLocationError('No geolocation available', map.center());
+   } 
       //Search for new places 
     var input = document.getElementById('search-term');
     var searchBox = new google.maps.places.SearchBox(input);
