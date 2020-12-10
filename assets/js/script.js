@@ -97,7 +97,7 @@ function initMap() {
   $("#search-btn").on("click", () => {
     geocodeAddress(geocoder, map);
   });
-
+  
   const script = document.createElement("script");
   script.setAttribute(
     "src",
