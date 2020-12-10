@@ -214,8 +214,8 @@ function currentWeather(city) {
           var iconCode = response.weather[0].icon;
           var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
           var currentTemp = response.main.temp + "°F";
-          var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
-            '<p class="subtitle" id="temp">' + currentTemp + '</p>';
+          var iconTempHTML = '<p class="subtitle has-text-centered is-large" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
+            '<p class="subtitle has-text-centered is-large" id="temp">' + currentTemp + '</p>';
           $('#icon-container').remove();
           $('#temp').remove();
           $("#weather-container").append(iconTempHTML);
