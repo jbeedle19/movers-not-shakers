@@ -8,72 +8,101 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="icon" type="image/png" href="./assets/images/earthquake-favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/images/earthquake-favicon.png"
+    />
     <title>Movers Not Shakers</title>
   </head>
-  <!-- BODY--> 
-  <body class= "has-background-dark Cantarell">
-      <!-- HEADER !--> 
-    <div class="navbar py-4 px-4 has-shadow is-white has-text-small media has-background-grey-light" role="navigation">
+  <!-- BODY-->
+  <body class="has-background-dark Cantarell">
+    <!-- HEADER !-->
+    <div
+      class="navbar py-4 px-4 has-shadow is-white has-text-small media has-background-grey-light"
+      role="navigation"
+    >
       <div class="container">
-      <!-- logo -->
-      <div class="navbar-brand">
-        <a class="navbar-item" href="#nav-contact">
-          <img src="assets/images/Movers not shakers logo.jpg" alt="site logo" style="max-height: 150px" class= "py-2 px-2 is-inline-touch">
-        </a>
-      </div>
-      <div class="media level-right">
-        <a class="navbar-burger " id="burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <!-- navbar menu -->
-      <div class="navbar-menu is-active is-white" id="nav-links">
-        <div class="navbar-end">
-        <div class="navbar-end">
-          <a href="#nav-about" class="navbar-item title">About Us</a>
+        <!-- logo -->
+        <div class="navbar-brand">
+          <a class="navbar-item" href="#nav-contact">
+            <img
+              src="assets/images/Movers not shakers logo.jpg"
+              alt="site logo"
+              style="max-height: 150px"
+              class="py-2 px-2 is-inline-touch"
+            />
+          </a>
+        </div>
+        <div class="media level-right">
+          <a
+            class="navbar-burger"
+            id="burger"
+            aria-label="menu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- navbar menu -->
+        <div class="navbar-menu is-active is-white" id="nav-links">
+          <div class="navbar-end">
+            <div class="navbar-end">
+              <a href="#nav-about" class="navbar-item title">How To</a>
+            </div>
+            <div class="navbar-end">
+              <a href="#nav-search" class="navbar-item title">Search</a>
+            </div>
+            <div class="navbar-end">
+              <a href="#nav-forecast" class="navbar-item title">Forecast</a>
+            </div>
           </div>
-          <div class="navbar-end">
-          <a href="#nav-search" class="navbar-item title">Search</a>
         </div>
-          <div class="navbar-end">
-          <a href="#nav-forecast" class="navbar-item title">Forecast</a>
-        </div>
-        </div>
-        </div>
-    </div>
       </div>
-<!-- TILES--> 
+    </div>
+    <!-- TILES-->
     <!-- Description -->
     <div class="tile is-ancestor">
-      <div class="tile is-7 is-vertical is-parent py-6">
-       <div class="is-child box">
-        <p class="title ml-2" id="nav-about" >About Us</p>
-        <p class="subtitle py-3">
-          Are you deathly scared of earthquakes but also an avid traveler? Are you sick 
-          of wasting time checking multiple sites to cross reference seismic information with
-          your travel plans? Here at Movers Not Shakers&copy; we strive to simplify your query 
-          needs by condensing both into one easy to use search engine. Simply enter the City,
-          State or Country in which you plan to travel and you will be provided with the most 
-          recent seismic activity along with the weather for that area.
-        </p>
-       </div>
+      <div class="tile is-5 is-vertical is-parent py-6">
+        <div class="is-child box">
+          <p class="title ml-2" id="nav-about">How to Use Our Site</p>
+          <p class="subtitle py-3">
+            Enter any City, State or Country in the search bar. The weather for that location will
+         appear directly below. If the area has had any seismic activity recently a red circle
+         will be displayed. The size of the circle relates to the magnitude of the most recent earthquake.
+         The larger the circle - the bigger the earthquake in that location.
+          </p>
+        </div>
         <!-- Search Form -->
-        <div class="tile is-7 is-vertical is-child box is-size-5 py-6 my-6 is-inline-touch">
+        <div
+          class="tile is-7 is-vertical is-child box is-size-5 py-6 my-6 is-inline-touch"
+        >
           <p class="title ml-5" id="nav-search">Search</p>
           <div class="field is-grouped" id="search-form">
             <div class="control has-icons-left ml-5">
-              <input class="input is-info is-rounded is-medium" type="text" placeholder="City, State or Country" id="search-term">
+              <input
+                class="input is-info is-rounded is-medium"
+                type="text"
+                placeholder="City, State or Country"
+                id="search-term"
+              />
               <span class="icon is-left">
                 <i class="fas fa-globe"></i>
               </span>
             </div>
             <div class="control has-icons-center">
-              <button class="button is-dark is-medium" type="submit" id="search-btn">
+              <button
+                class="button is-dark is-medium"
+                type="submit"
+                id="search-btn"
+              >
                 <span class="icon">
                   <i class="fas fa-search"></i>
                 </span>
@@ -82,61 +111,72 @@
           </div>
         </div>
         <!-- Weather API Return -->
-        <div class="tile is-7 is-child box is-size-5 ml-1 py-5 my-6" id="weather-container">
+        <div
+          class="tile is-7 is-child box is-size-5 ml-1 py-5 my-6"
+          id="weather-container"
+        >
           <p class="title ml-5" id="nav-forecast">Today's Forecast</p>
         </div>
-    </div>
+      </div>
       <!-- Map Display -->
-     <div id="mp1">
-      <div class="tile is-parent py-6 is-vertical">
-        <div class="tile is-12 is-child box py-6">
-          <p class="title ml-5">Map</p> 
-          <div id="map" class="tile is-12">
-          </div>  
+      <div id="mp1">
+        <div class="tile is-parent py-6 is-vertical">
+          <div class="tile is-12 is-child box py-6">
+            <p class="title ml-5">Map</p>
+            <div id="map" class="tile is-12"></div>
           </div>
-          </div>
-          </div>
-    </div>
-<!-- FOOTER-->
-<div class="has-background-grey-light">
-    <footer class="footer title ml-5 py-6 my-6 is-inline-touch has-background-grey-light">
-      <div class="content has-text-centered">
-        <div class="py-3" id="nav-contact">
-        <a href="mailto:contact@moversnotshakers.com"><i class="far fa-address-card "></i>Contact Us
-        </a>
-      </div>
-      <div class="is-inline-touch ml-1 mx-6">
-      <p>Movers Not Shakers Inc.</p>
-      </div>
-    </div>
-  </footer>
-</div>
-      <div class="modal" id="error-modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head has-background-danger">
-            <p class="modal-card-title">Error</p>
-            <button class="delete" aria-label="close" id="close"></button>
-          </header>
-          <section class="modal-card-body">
-            <p id="error"></p>
-          </section>
         </div>
       </div>
-      
-<!-- Google API link -->
+    </div>
+    <!-- FOOTER-->
+    <div class="has-background-grey-light">
+      <footer
+        class="footer title ml-5 py-6 my-6 is-inline-touch has-background-grey-light"
+      >
+        <div class="content has-text-centered">
+          <div class="py-3" id="nav-contact">
+            <a href="mailto:contact@moversnotshakers.com"
+              ><i class="far fa-address-card"></i>Contact Us
+            </a>
+          </div>
+          <div class="is-inline-touch ml-1 mx-6">
+            <p>Movers Not Shakers Inc.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <div class="modal" id="error-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head has-background-danger">
+          <p class="modal-card-title">Error</p>
+          <button class="delete" aria-label="close" id="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <p id="error"></p>
+        </section>
+      </div>
+    </div>
+
+    <!-- Google API link -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script async defer src=
-    "https://maps.googleapis.com/maps/api/js?key=AIzaSyBDh_
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDh_
     l8hWuiFHDGps-sQqN1pBckdYoceNs&callback=initMap&libraries=places&v=weekly"
-    defer 
-    type="text/javascript"></script>
-<!-- Search links -->
+      defer
+      type="text/javascript"
+    ></script>
+    <!-- Search links -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"
+    ></script>
     <!-- Bulma placeholder script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
