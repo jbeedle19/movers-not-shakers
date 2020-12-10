@@ -1,3 +1,9 @@
+//mobile CSS 
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#nav-links");
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active")
+});
 // Variables:
 // Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";

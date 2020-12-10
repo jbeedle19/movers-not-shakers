@@ -16,40 +16,41 @@
   <!-- BODY--> 
   <body class="has-background-black">
       <!-- HEADER 1--> 
-    <nav class="navbar has-shadow is-transparent is-spaced is-black">
+    <div class="navbar py-4 has-shadow is-white has-text-small" role="navigation">
+      <div class="container">
       <!-- logo -->
       <div class="navbar-brand">
         <a class="navbar-item">
-          <img src="assets/images/Movers not shakers logo.jpg" alt="site logo" style="max-height: 100px" class= py-2 px-2>
+          <img src="assets/images/Movers not shakers logo.jpg" alt="site logo" style="max-height: 100px" class= "py-2 px-2">
+        </a>
+      </div>
+      <div>
+        <a class="navbar-burger" id="burger" aria-label="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
       <!-- navbar menu -->
-      <div class="navbar-menu is-active">
-        <div class="navbar-start">
+      <div class="navbar-menu is-active is-white" id="nav-links">
+        <div class="navbar-end">
+        <div class="navbar-end">
           <a href="#nav-about" class="navbar-item title">About Us</a>
-        </div>
-      <div class="navbar-menu is-active">
-        <div class="navbar-start">
+          </div>
+          <div class="navbar-end">
           <a href="#nav-search" class="navbar-item title">Search</a>
         </div>
-      <div class="navbar-menu is-active">
-        <div class="navbar-start">
-          <a href="#map" class="navbar-item title">Map</a>
+          <div class="navbar-end">
+          <a href="#nav-forecast" class="navbar-item title pr-3">Forecast</a>
         </div>
-      <div class="navbar-menu is-active">
-        <div class="navbar-start">
-          <a href="#nav-forecast" class="navbar-item title">Forecast</a>
         </div>
-      <div class="navbar-menu is-active">
-        <div class="navbar-start">
-          <a href="mailto:contact@moversnotshakers.com" class="navbar-item title">Contact Us</a>
         </div>
+    </div>
       </div>
-    </nav>
 <!-- TILES--> 
     <!-- Description -->
     <div class="tile is-ancestor">
-      <div class="tile is-5 is-vertical is-parent">
+      <div class="tile is-5 is-vertical is-parent py-6 my-6">
         <p class="title ml-5" id="nav-about" >About Us</p>
         <p class="subtitle ml-5">
           Are you deathly scared of earthquakes but also an avid traveler? Are you sick 
@@ -60,7 +61,7 @@
           recent seismic activity along with the weather for that area.
         </p>
         <!-- Search Form -->
-        <div class="tile is-6 is-child is-size-5">
+        <div class="tile is-6 is-child is-size-5 py-6 my-6">
           <p class="title ml-5" id="nav-search">Search</p>
           <div class="field is-grouped" id="search-form">
             <div class="control has-icons-left ml-5">
@@ -79,21 +80,25 @@
           </div>
         </div>
         <!-- Weather API Return -->
-        <div class="tile is-4 is-child is-size-5 ml-5" id="weather-container">
-          <p class="title ml-5" id="nav-forecast">Today's Forecast</p>
+        <div class="tile is-4 is-child is-size-5 ml-1 py-7 my-2 has-text-left" id="weather-container">
+          <p class="title" id="nav-forecast">Today's Forecast</p>
         </div>
       </div>
       <!-- Map Display -->
-      <div class="tile is-10 is-parent">
+      <div class="tile is-10 is-parent py-6">
         <div class="tile is-child box-is-black">
           <p class="title has-background-b ml-5">Map</p>
-          <div id="map" class="tile is-10 ml-5"></div>
+          <div id="map" class="tile is-10 ml-1"></div>
         </div>
       </div>
     </div>
 <!-- FOOTER-->     
-    <footer class="footer title ml-5">
+    <footer class="footer title ml-5 py-6 my-6">
       <div class="content has-text-centered">
+        <div class="py-3">
+        <a href="mailto:contact@moversnotshakers.com"><i class="far fa-address-card"></i>Contact Us
+        </a>
+      </div>
       <p>Movers Not Shakers Inc.</p>
     </div>
   </footer>
