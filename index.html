@@ -34,7 +34,7 @@
         </div>
       <div class="navbar-menu is-active">
         <div class="navbar-start">
-          <a href="#nav-map" class="navbar-item title">Map</a>
+          <a href="#map" class="navbar-item title">Map</a>
         </div>
       <div class="navbar-menu is-active">
         <div class="navbar-start">
@@ -50,7 +50,7 @@
     <!-- Description -->
     <div class="tile is-ancestor">
       <div class="tile is-5 is-vertical is-parent">
-        <p class="title ml-5" id="nav-about">About Us</p>
+        <p class="title ml-5" id="nav-about" >About Us</p>
         <p class="subtitle ml-5">
           Are you deathly scared of earthquakes but also an avid traveler? Are you sick 
           of wasting time checking multiple sites to cross reference seismic information with
@@ -64,7 +64,7 @@
           <p class="title ml-5" id="nav-search">Search</p>
           <div class="field is-grouped" id="search-form">
             <div class="control has-icons-left ml-5">
-              <input class="input is-info is-rounded is-medium" type="text" placeholder="Location" id="search-term">
+              <input class="input is-info is-rounded is-medium" type="text" placeholder="City, State or Country" id="search-term">
               <span class="icon is-left">
                 <i class="fas fa-globe"></i>
               </span>
@@ -86,7 +86,7 @@
       <!-- Map Display -->
       <div class="tile is-10 is-parent">
         <div class="tile is-child box-is-black">
-          <p class="title has-background-b ml-5" id="nav-map">Map</p>
+          <p class="title has-background-b ml-5">Map</p>
           <div id="map" class="tile is-10 ml-5"></div>
         </div>
       </div>
@@ -96,7 +96,20 @@
       class="is-size-5  mt-6 mr-6 pb-6 pl-6"
     >
       Movers Not Shakers Inc.
-    </footer>
+  </footer>
+      <div class="modal" id="error-modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head has-background-danger">
+            <p class="modal-card-title">Error</p>
+            <button class="delete" aria-label="close" id="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <p id="error"></p>
+          </section>
+        </div>
+      </div>
+      
 <!-- Google API link -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script async defer src=
