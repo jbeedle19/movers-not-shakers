@@ -118,6 +118,11 @@ function initMap() {
     };
   });
 
+  // Defines the callback function referenced in the jsonp file.
+function eqfeed_callback(data) {
+  map.data.addGeoJson(data);
+  }
+
   //Search for new places 
   var input = document.getElementById('search-term');
   var searchBox = new google.maps.places.SearchBox(input);
