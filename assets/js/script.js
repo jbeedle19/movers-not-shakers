@@ -1,3 +1,9 @@
+//mobile CSS 
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#nav-links");
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active")
+});
 // Variables:
 // Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
@@ -10,7 +16,7 @@ function initMap() {
   // Styles a map in night mode.
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.674, lng: -73.945 },
-    zoom: 10,
+    zoom: 7,
     styles: [
       { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
       { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -208,8 +214,8 @@ function currentWeather(city) {
           var iconCode = response.weather[0].icon;
           var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
           var currentTemp = response.main.temp + "°F";
-          var iconTempHTML = '<p class="subtitle" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
-            '<p class="subtitle" id="temp">' + currentTemp + '</p>';
+          var iconTempHTML = '<p class="subtitle has-text-centered is-large" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
+            '<p class="subtitle has-text-centered is-large" id="temp">' + currentTemp + '</p>';
           $('#icon-container').remove();
           $('#temp').remove();
           $("#weather-container").append(iconTempHTML);
