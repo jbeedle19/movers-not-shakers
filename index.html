@@ -35,7 +35,7 @@
               src="assets/images/Movers not shakers logo.jpg"
               alt="site logo"
               style="max-height: 150px"
-              class="py-2 px-2 is-inline-touch"
+              class="py-2 px-2"
             />
           </a>
         </div>
@@ -83,10 +83,10 @@
           </p>
         </div>
         <!-- Search Form -->
-        <div class="tile is-7 is-vertical is-child box is-size-5 py-6 my-6">
+        <div class="tile is-vertical is-child box is-size-5 py-6 my-6">
           <p class="title ml-5" id="nav-search">Search</p>
           <div class="field is-grouped" id="search-form">
-            <div class="control has-icons-left ml-5">
+            <div class="control is-expanded has-icons-left ml-5">
               <input
                 class="input is-info is-rounded is-medium"
                 type="text"
@@ -98,11 +98,7 @@
               </span>
             </div>
             <div class="control has-icons-center">
-              <button
-                class="button is-dark is-medium"
-                type="submit"
-                id="search-btn"
-              >
+              <button class="button is-medium" type="submit" id="search-btn">
                 <span class="icon">
                   <i class="fas fa-search"></i>
                 </span>
@@ -112,22 +108,23 @@
         </div>
         <!-- Weather API Return -->
         <div
-          class="tile is-7 is-child box is-size-5 ml-1 py-5 my-6"
+          class="tile is-child box is-size-5 ml-1 py-5 my-6"
           id="weather-container"
         >
           <p class="title ml-5" id="nav-forecast">Today's Forecast</p>
         </div>
       </div>
       <!-- Map Display -->
-      <div id="mp1">
-        <div class="tile is-parent py-6 is-vertical">
-          <div class="tile is-12 is-child box py-6">
-            <p class="title ml-5">Map</p>
-            <div id="map" class="tile is-12"></div>
-          </div>
+      <div id="mp1" class="tile is-parent is-6 py-6 is-vertical">
+        <div class="tile is-child box py-6" id="mapparent">
+          <p class="title ml-5">Map</p>
+          <div id="map"></div>
         </div>
       </div>
     </div>
+    <!--<div class="tile is-child box py-6">-->
+    <!--<p class="title ml-5">Map</p>-->
+    <!--<div id="map">-->
     <!-- FOOTER-->
     <div class="has-background-grey-light">
       <footer class="footer title ml-5 py-6 my-6 has-background-grey-light">
@@ -137,7 +134,7 @@
               ><i class="far fa-address-card"></i>Contact Us
             </a>
           </div>
-          <div class="is-inline-touch ml-1 mx-6">
+          <div class="ml-1 mx-6">
             <p>Movers Not Shakers Inc.</p>
           </div>
         </div>
