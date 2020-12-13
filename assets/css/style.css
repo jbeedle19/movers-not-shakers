@@ -1,29 +1,51 @@
 /* CSS Start */
 body {
-  margin: 10px;
+  margin: 0px;
   padding: 10px;
   width: 100%;
-box-sizing: border-box; 
- }
+  box-sizing: border-box;
+}
 
- /*#h1{
+/*#h1{
     color: aliceblue;
 }*/
 
+/* #mp1 {
+  width: 100%;
+  min-height: 50vh;
+} */
 
-#mp1 {
-  height: 800px;
-  width: 800px;
-}
+/* #mp2 {
+  width: 100%;
+  height: 100%;
+} */
 
 /* Map */
 #map {
-    height: 500px;
-    width: 500px;
+  height: 90%;
+  width: 100%;
+  min-height: 45vh;
 }
- 
+
+#mapparent {
+  min-height: 50vh;
+}
+
 /* Create four equal columns that floats next to each other 
 .burger {
   float: left;
   width: 100%;
 }*/
+/*hero image */
+.hero {
+  background: url(https://www.wilshirelawfirm.com/wp-content/uploads/2019/07/NPS-Photo-7-10-19.jpg);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* navbar adjusment on mobile */
+.navbar-menu {
+  background-color: transparent;
+}
