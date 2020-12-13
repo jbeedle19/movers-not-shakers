@@ -16,10 +16,10 @@ A site to help users plan trips based on that location's seismic activity. Desig
 https://jbeedle19.github.io/movers-not-shakers/
 
 ## Screenshots
-![screenshot](./assets/images/landing-page.png)
-![screenshot](./assets/images/many-quakes.png)
-![screenshot](./assets/images/medium-quakes.png)
-![screenshot](./assets/images/few-quakes.png)
+![screenshot](./assets/images/landing.png)
+![screenshot](./assets/images/many.png)
+![screenshot](./assets/images/medium.png)
+![screenshot](./assets/images/few.png)
 ![screenshot](./assets/images/weather-error.png)
 ![screenshot](./assets/images/map-error.png)
 
