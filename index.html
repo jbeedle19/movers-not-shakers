@@ -14,6 +14,10 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -25,52 +29,64 @@
     <title>Movers Not Shakers</title>
   </head>
   <!-- BODY-->
-  <body class="has-background-dark Cantarell">
+  <body class="has-background-light is-family-monospace">
     <!-- HEADER !-->
-    <div
-      class="navbar py-4 px-4 has-shadow is-white has-text-small has-background-grey-light"
-      role="navigation"
-    >
-      <div class="container">
-        <!-- logo -->
-        <div class="navbar-brand">
-          <a class="navbar-item" href="#nav-contact">
-            <img
-              src="assets/images/Movers not shakers logo.jpg"
-              alt="site logo"
-              style="max-height: 150px"
-              class="py-2 px-2"
-            />
-          </a>
-        </div>
-        <div>
-          <a
-            class="navbar-burger"
-            id="burger"
-            aria-label="menu"
-            aria-expanded="false"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <!-- navbar menu -->
-        <div class="navbar-menu is-active is-white" id="nav-links">
-          <div class="navbar-end">
-            <div class="navbar-end">
-              <a href="#nav-about" class="navbar-item title">How To</a>
+    <div class="hero is-large">
+      <div class="hero-head">
+        <div
+          class="navbar py-4 px-4 has-shadow is-dark has-text-small"
+          role="navigation"
+        >
+          <div class="container">
+            <!-- logo -->
+            <div class="navbar-brand">
+              <a class="navbar-item" href="#nav-contact">
+                <img
+                  src="assets/images/Movers not shakers logo.jpg"
+                  alt="site logo"
+                  style="max-height: 100px"
+                  class="py-2 px-2"
+                />
+              </a>
             </div>
-            <div class="navbar-end">
-              <a href="#nav-search" class="navbar-item title">Search</a>
+            <div>
+              <a class="navbar-burger" id="burger">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
             </div>
-            <div class="navbar-end">
-              <a href="#nav-forecast" class="navbar-item title">Forecast</a>
+            <!-- navbar menu -->
+            <div class="navbar-menu is-active" id="nav-links">
+              <div class="navbar-end">
+                <div class="navbar-end">
+                  <a
+                    href="#nav-about"
+                    class="navbar-item title has-text-black button is-rounded is-normal"
+                    >How To</a
+                  >
+                </div>
+                <div class="navbar-end">
+                  <a
+                    href="#nav-search"
+                    class="navbar-item title has-text-black button is-rounded is-normal"
+                    >Search</a
+                  >
+                </div>
+                <div class="navbar-end">
+                  <a
+                    href="#nav-forecast"
+                    class="navbar-item title has-text-black button is-rounded is-normal"
+                    >Forecast</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- TILES-->
     <!-- Description -->
     <div class="tile is-ancestor">
@@ -126,12 +142,9 @@
         </div>
       </div>
     </div>
-    <!--<div class="tile is-child box py-6">-->
-    <!--<p class="title ml-5">Map</p>-->
-    <!--<div id="map">-->
     <!-- FOOTER-->
-    <div class="has-background-grey-light">
-      <footer class="footer title ml-5 py-6 my-6 has-background-grey-light">
+    <div class="has-background-light">
+      <footer class="footer title ml-5 py-6 my-6 has-background-light">
         <div class="content has-text-centered">
           <div class="py-3" id="nav-contact">
             <a href="mailto:contact@moversnotshakers.com"
@@ -179,5 +192,6 @@
     <!-- Bulma placeholder script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="~bulma-carousel/dist/js/bulma-carousel.min.js"></script>
   </body>
 </html>

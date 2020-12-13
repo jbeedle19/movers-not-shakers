@@ -30,8 +30,22 @@ body {
 #mapparent {
   min-height: 50vh;
 }
+
 /* Create four equal columns that floats next to each other 
 .burger {
   float: left;
   width: 100%;
 }*/
+/*hero image */
+.hero {
+  background: url(https://www.wilshirelawfirm.com/wp-content/uploads/2019/07/NPS-Photo-7-10-19.jpg);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* navbar adjusment on mobile */
+.navbar-menu {
+  background-color: transparent;
+}

@@ -1,16 +1,15 @@
-//mobile CSS 
+//mobile CSS
 const burgerIcon = document.querySelector("#burger");
 const navbarMenu = document.querySelector("#nav-links");
 burgerIcon.addEventListener("click", () => {
-  navbarMenu.classList.toggle("is-active")
+  navbarMenu.classList.toggle("is-active");
 });
 // Variables:
 // Variable to store Weather API Key
 var weatherApiKey = "f6fb688c99006ae63bed987a2574a6d4";
 
 // Variable for localStorage and last searched item
-var lastSearch = localStorage.getItem("search") || '';
-
+var lastSearch = localStorage.getItem("search") || "";
 
 function initMap() {
   // Styles a map in night mode.
@@ -125,16 +124,16 @@ function initMap() {
   });
 
   // Defines the callback function referenced in the jsonp file.
-function eqfeed_callback(data) {
-  map.data.addGeoJson(data);
+  function eqfeed_callback(data) {
+    map.data.addGeoJson(data);
   }
 
-  //Search for new places 
-  var input = document.getElementById('search-term');
+  //Search for new places
+  var input = document.getElementById("search-term");
   var searchBox = new google.maps.places.SearchBox(input);
 
-  //Looks for areas close to their location first 
-  map.addListener('bounds_changed', function () {
+  //Looks for areas close to their location first
+  map.addListener("bounds_changed", function () {
     searchBox.setBounds(map.getBounds());
   });
 
@@ -142,44 +141,43 @@ function eqfeed_callback(data) {
   var markers = [];
 
   //Selects places predicted from searchbox
-  searchBox.addListener('places_changes', function () {
+  searchBox.addListener("places_changes", function () {
     var places = searchBox.getPlaces();
 
-    if (places.length === 0)
-      return;
+    if (places.length === 0) return;
 
     //clears out previous markers
-    markers.forEach(function (m) { m.setMap(null); });
+    markers.forEach(function (m) {
+      m.setMap(null);
+    });
     markers = [];
 
     //Coordinate boundaries of map
     var bounds = new google.maps.LatLngBounds();
 
     places.forEach(function (p) {
-      if (!p.geometry)
-        return;
+      if (!p.geometry) return;
 
-      markers.push(new google.maps.Marker({
-        map: map,
-        title: p.name,
-        position: p.geometry.location
-      }));
+      markers.push(
+        new google.maps.Marker({
+          map: map,
+          title: p.name,
+          position: p.geometry.location,
+        })
+      );
 
-      if (p.geometry.viewport)
-        bounds.union(p.geometry.viewport);
-      else
-        bounds.extend(p.geometry.location);
+      if (p.geometry.viewport) bounds.union(p.geometry.viewport);
+      else bounds.extend(p.geometry.location);
     });
     map.fitBounds(bounds);
   });
-
 }
 
 function eqfeed_callback(data) {
   map.data.addGeoJson(data);
 }
 
-// // // Location error function 
+// // // Location error function
 function handleLocationError(content, position) {
   infoWindow.setPosition(position);
   infowWindow.setContent(content);
@@ -198,54 +196,66 @@ function geocodeAddress(geocoder, resultsMap) {
     } else {
       $("html").addClass("is-clipped");
       $("#error-modal").addClass("is-active");
-      $("#error").text("Geocode was not successful for the following reason: " + status);
+      $("#error").text(
+        "Geocode was not successful for the following reason: " + status
+      );
     }
   });
-
 }
 
 //Function for displaying Current Weather
 function currentWeather(city) {
-  var apiURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherApiKey;
+  var apiURLCurrent =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&units=imperial&appid=" +
+    weatherApiKey;
   fetch(apiURLCurrent)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (response) {
           var iconCode = response.weather[0].icon;
-          var iconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
+          var iconURL =
+            "https://openweathermap.org/img/wn/" + iconCode + ".png";
           var currentTemp = response.main.temp + "°F";
-          var iconTempHTML = '<p class="subtitle has-text-centered is-large" id="icon-container"><img id="weatherIcon" src="' + iconURL + '"/></p>' +
-            '<p class="subtitle has-text-centered is-large" id="temp">' + currentTemp + '</p>';
-          $('#icon-container').remove();
-          $('#temp').remove();
+          var iconTempHTML =
+            '<p class="subtitle has-text-centered is-large" id="icon-container"><img id="weatherIcon" src="' +
+            iconURL +
+            '"/></p>' +
+            '<p class="subtitle has-text-centered is-large" id="temp">' +
+            currentTemp +
+            "</p>";
+          $("#icon-container").remove();
+          $("#temp").remove();
           $("#weather-container").append(iconTempHTML);
         });
       } else {
         $("html").addClass("is-clipped");
         $("#error-modal").addClass("is-active");
-        $("#error").text("Not able to find weather for specific location. Please enter city, state or country.");
-
+        $("#error").text(
+          "Not able to find weather for specific location. Please enter city, state or country."
+        );
       }
     })
     .catch(function (error) {
       $("html").addClass("is-clipped");
       $("#error-modal").addClass("is-active");
       $("#error").text("Unable to connect to Weather Report");
-
     });
-};
+}
 
 // Function to load anything that was saved in localStorage
 function loadStorage() {
-  if (lastSearch === '') {
+  if (lastSearch === "") {
     return;
   } else {
     $("#search-term").val(lastSearch);
     currentWeather(lastSearch);
-    setTimeout(function () { $('#search-btn').click() }, 100);
+    setTimeout(function () {
+      $("#search-btn").click();
+    }, 100);
   }
 }
-
 
 // Event Listeners:
 // Listens for search to be clicked and runs currentWeather
@@ -254,8 +264,8 @@ $("#search-btn").on("click", function (event) {
   var searchTerm = $("#search-term").val();
   localStorage.setItem("search", searchTerm);
   currentWeather(searchTerm);
-})
-// closes error modal 
+});
+// closes error modal
 $("#close").on("click", function (event) {
   event.preventDefault();
   $("html").removeClass("is-clipped");
