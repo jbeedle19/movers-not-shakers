@@ -272,5 +272,8 @@ $("#close").on("click", function (event) {
   $("#error-modal").removeClass("is-active");
 });
 
-loadStorage();
-initMap();
+$(document).ready(function() {
+  console.log('ready!')
+  loadStorage();
+  initMap();
+});
