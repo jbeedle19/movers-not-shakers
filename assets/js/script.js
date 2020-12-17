@@ -273,7 +273,6 @@ $("#close").on("click", function (event) {
 });
 
 $(document).ready(function() {
-  console.log('ready!')
   loadStorage();
   initMap();
 });
